@@ -177,7 +177,7 @@ With explicit equations known for $F_x(\phi,U)$, $C_t$, and $C_n$, an aggressive
 \label{fig:UvPhi}
 \end{figure}
  
-\section{Optimized Augerbot Results and Analysis}
+\section{Optimized Augerbot Observations and Future Directions}
 In SolidWorks, a new auger was modeled with dimensions corresponding to the optimal parameters found using algorithm 1 [Table \ref{optParamTable}]. Compared to the helices tested previously [Figure \ref{fig:all_screws}], the thickness of the profile swept along the path of the screw was increased to ensure the threads merged properly with the stem.   
 
 \begin{table}[H] 
@@ -217,15 +217,13 @@ Figure \ref{fig:final_robot} shows the optimized auger prototype fastened onto t
 \label{fig:final_testing}
 \end{figure} 
 
-When the helix is buried horizontally \SI{0.05}{\m} underground, the robot does not advance forward. Instead, the auger tilts out of the poppy seed bed within a span of 2 seconds. Looking at the geometry of the auger, it is evident that a stress gradient, in the direction of gravity, contributes to the upward bias of the robot's motion. To counter this tendency to surface, wings with a downward pitch could be added to ensure neutral buoyancy. Additional trim flaps could also be added continuously to actively control the dive angle of the auger's nose. 
+When the robot is buried horizontally \SI{0.05}{\m} underground, it does not advance forward. Instead, the auger tilts out of the poppy seed bed within a span of 2 seconds. Looking at the geometry of the auger, it is evident that a stress gradient, in the direction of gravity, contributes to the upward bias of the robot's motion. To counter this tendency to surface, wings with a downward pitch could be added to ensure neutral buoyancy. Additional trim flaps could also be added continuously to actively control the dive angle of the auger's nose. 
  
-Speculate all the things as to why things failed or not?
+When the robot is placed horizontally on the surface of a freshly fluidized (i.e level) poppy seed bed, it spirals in the clockwise direction due to the right-handed asymmetry of the auger - regardless of the wing configuration. This behavior matches that exhibited by previous prototypes. Larger wings or a rudder could be installed to counter the torque generated. A left-handed auger also be added adjacent to the existing right-handed auger. 
+ 
+When the robot penetrates the poppy seed bed at a sufficiently shallow angle with respect to the horizontal plane, some axial translation is observed. Pointing the nose of the auger downwards prevents the robot from resurfacing immediately, giving it enough time to pull itself forward. This observation reinforces the need for larger, downward-pitched wings and the development of actuated wing flaps.   
 
-\section{Future Direction}
-Future direction
-larger wings, fatter wings
-wings with opposite angles to counter cw bias - possible due to non-cancellation of local stress at top and bottom of screw 
-
+\section{Conclusion}
 
 
 \bibliographystyle{plain}
