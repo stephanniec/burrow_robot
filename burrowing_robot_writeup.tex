@@ -39,19 +39,17 @@ The purpose of this project was to create an underground locomotor capable of fo
 \tableofcontents
 
 \section{Introduction}
-Subterranean navigation and operation is important for a sundry of tasks, such as mining, construction, reconnaissance and bomb detection. Although there are numerous robots available for working in water and hard earth, fewer options exist for exploring granular media environments. In the past, research into bio-inspired locomotion [legged (turtles) \cite{Mazouchova}, undulating (snakes) \cite{Marvi} and push-me-pull-you (bivalves) \cite{Winter, Germann} (Cite bloopy)] through sand has motivated the development of many mechanical systems. From extant technologies, helical motion is known to be an effective strategy for pulling bodies through solids (e.g drills) and fluids (e.g airplanes). However, little research has been conducted to examine the performance of helical motion in rheological matter.
+Subterranean navigation and operation is important for a sundry of tasks, such as mining, construction, reconnaissance and bomb detection. Although there are numerous robots available for working in water and hard earth, fewer options exist for exploring granular media environments. In the past, research into bio-inspired locomotion (legged (turtles) \cite{Mazouchova}, undulating (snakes) \cite{Marvi} and push-me-pull-you (bivalves and protozoans) \cite{Winter, Germann, Avron}) through sand has motivated the development of many mechanical systems. From extant technologies, helical motion is known to be an effective strategy for pulling bodies through solids (e.g drills) and fluids (e.g airplanes). However, little research has been conducted to examine the performance of helical motion in rheological matter. The burrowing robot project investigates how a rotating auger could be used to help robots ``swim'' within dry granular media. This study was largely influenced by two papers: ``Helical Locomotion in a Granular Medium'' and ``A Terradynamics of Legged Locomotion on Granular Media'' \cite{Melo, Li}.
 
-The burrowing robot project investigates how helical motion can be used to help robots “fly” within dry granular media. This study was largely influenced by two papers: "" and "".
+In August 2017, Texier \textit{et. al} developed a mathematical model that predicts the amount of propulsive force created by a wire coil (with a small fiber radius) moving horizontally through a tank of plastic beads. From experiments, the pulling force induced was found to depend linearly on the depth of the rotating helix. A method for computing optimal local inclination angles was verified for measured friction coefficient ratios. The relationship discovered between the helix's translational speed and local inclination was subsequently used to validate our characterization of auger motion in granular media. In \cite{Melo}, the coil movement was constrained to a horizontal track. Eventually, however, we want to build a robot capable of moving freely; as such, a model which considers arbitrary directions is required.     
 
-Francisco's paper summary
-
-Chen's paper summary 
-
-Goal underground locomotor follow arbitrary trajectories
+Li \textit{et. al} employed finite element analysis to split the foot of a RHex robot into thin, rigid plates. When RHex scuttles across a granular substrate, the force and velocity vectors on each plate vary in direction, as does the angle. 
+Vertical and horizontal stress per depth were measured for differently oriented tiles pushed through poppy seeds and \SI{0.3}{\milli\m} and \SI{3}{\milli\m} glass beads. 
+Fourier transforms were subsequently applied to obtain a generalized fitting approximation for normal and tangential friction coefficients sensitive to a plate's attack and intrusion angles. In this study, these equations as well as the zeroth- and first-order Fourier coefficients explicitly calculated for loosely-packed poppy seeds was used. 
 
 \section{Iteration Progression}
 
-The robot designed consists of 5 main components. When powered, an Archimedes screw mounted at the head of the robot will spin to part granular media and pull the robot forward. This is attached to an adapter plate which fits snugly around the shaft of a DC motor. A cylindrical cap on the motor itself stops granules from falling into an exposed gear box. Wedged inside the protective cap are wings which prevent the body of the robot from rotating with the screw. Lastly, an elongated hemispherical housing unit covers the back of the robot to shield soldered wire junctions from wear and tear. Note, a modular robot was created to make testing different combinations of screws and wing shapes easier.
+The robot designed consists of 5 main components. When powered, an Archimedes screw mounted at the head of the robot spins to part granular media and pull the robot forward. This is attached to an adapter plate which fits snugly around the shaft of a DC motor. A cylindrical cap on the motor itself stops granules from falling into an exposed gear box. Wedged inside the protective cap are wings which prevent the body of the robot from rotating with the screw. Lastly, an elongated hemispherical housing unit covers the back of the robot to shield soldered wire junctions from wear and tear. Note, a modular robot was created to make testing different combinations of screws and wing shapes easier.
 
 \begin{figure}[H]
 \centering
@@ -77,7 +75,7 @@ How the following iterations were changed to compensate.
 Wider screw, modular wings, captured nuts for easier assembly and better interfacing with adapter, brass adapter for motor shaft to counter wt imbalance and keep the screw on since the PLA kept wearing after a while.
 
 \section{Analytical Optimization}
-During testing, screws with larger radii and pitches appeared to produce more propulsive force. To find the optimal parameters needed to maximize an auger's pulling ability, a more principled method - inspired by extant studies - was developed \cite{Melo,Chen}.
+During testing, screws with larger radii and pitches appeared to produce more propulsive force. To find the optimal parameters needed to maximize an auger's pulling ability, a more principled method - inspired by extant studies - was developed \cite{Melo,Li}.
 
 \begin{figure}[H]
 \centering
@@ -99,7 +97,7 @@ During testing, screws with larger radii and pitches appeared to produce more pr
  
 A cylindrical coordinate system ($\vec{e_r}, \vec{e_\theta}, \vec{e_x}$) was used to describe the helix [Figure~\ref{fig:helix_csys}]. Local inclination angle $\phi$, shown in Figure~\ref{fig:helix_phi}, was used to define tangential unit vector $\vec{e_t} = \left\langle 0, \cos(\phi),\sin(\phi)\right\rangle $ and normal unit vector $\vec{e_n} = \left\langle 0, \sin(\phi), -\cos(\phi)\right\rangle $. For a tiny section along the helix path, the local velocity was determined to be $\vec{\nu} = \left\langle 0, rw, U\right\rangle $, where $\omega$ represents the angular velocity about the auger's stem and $U$ refers to the translational velocity along the x-axis. Note, the screw's radius and height were restricted to account for the dimensions of the poppy seed tank and the build volume of the Ultimaker 3 3D printer.  
 
-Imagine an auger is composed of infinitesimal segments, each of which feels drag and thrust. According to resistive force theory (RFT), the amount of force generated by a body moving through granular media can be approximated by adding the forces experienced by each of its finite elements. $F_x(\phi,U)$, therefore, is the linear superposition of all local forces projected onto the x-axis. For an auger with radius $R$ and $n$ revolutions, this calculation looks like
+Imagine an auger is composed of infinitesimal segments, each of which feels drag and thrust. According to resistive force theory, the amount of force generated by a body moving through granular media can be approximated by adding the forces experienced by each of its finite elements. $F_x(\phi,U)$, therefore, is the linear superposition of all local forces projected onto the x-axis. For an auger with radius $R$ and $n$ revolutions, this calculation looks like
 \begin{equation}\label{FxBasic}
 F_x(\phi,U) = \int_{0}^{R}\int_{0}^{2\pi n} (\vec{f}\cdot\vec{e_x})\frac{r}{\cos(\phi)} d\theta dr\ \text{,}
 \end{equation}
@@ -155,7 +153,7 @@ When the system is at equilibrium, $\phi$ is the only parameter that controls th
 *Omitting the absolute value operator ensures that Newton-Raphson will not be employed to solve for the $U$-intercept when the line tangent at $U_{guess}$ crosses the $U$-axis at a value $\leq 0$. This is necessary because function $F_x(\phi,U)$ contains natural log terms.   
 
 \medskip
-If an auger is placed on its side, small segments along the body can be interpreted as tiny plates [Figure \ref{fig:helix_plate}]. Regardless of its location around the x-axis, each segment has the same attack angle $\beta$. With this in mind, $C_t$ and $C_n$ were determined using fitting functions proposed by Chen \textit{et al}. For a prone helix translating axially within loosely packed poppy seeds ($\gamma = 0$), these force coefficients were computed using 
+If an auger is placed on its side, small segments along the body can be interpreted as tiny plates [Figure \ref{fig:helix_plate}]. Regardless of its location around the x-axis, each segment has the same attack angle $\beta$. With this in mind, $C_t$ and $C_n$ were determined using fitting functions proposed by Li \textit{et al}. For a prone helix translating axially within loosely packed poppy seeds ($\gamma = 0$), these force coefficients were computed using 
 \begin{equation}\label{chenCt}
 C_t = \left[0.02\sin(-2\beta)+0.051+0.047\cos(2\beta)+0.053\sin(2\beta) \right]d
 \end{equation}
