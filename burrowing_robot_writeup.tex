@@ -251,7 +251,14 @@ When the robot is buried horizontally \SI{0.05}{\m} underground, it does not adv
  
 When the robot is placed horizontally on the surface of a freshly fluidized (i.e level) poppy seed bed, it spirals in the clockwise direction due to the right-handed asymmetry of the auger for all angles about the robot's roll axis. This behavior matches that exhibited by previous prototypes. An attempt to produce counter-rotation using a \SI{30}{\degree} left wing  and \SI{-30}{\degree} right wing produced negligible results. Larger wings or a rudder could be installed to neutralize the torque generated. A left-handed auger also be added adjacent to the existing right-handed auger. 
  
-When the robot penetrates the poppy seed bed at a sufficiently shallow angle with respect to the horizontal plane, some axial translation is observed. Pointing the nose of the auger downwards prevents the robot from resurfacing immediately, giving it enough time to pull itself forward. This observation reinforces the need for further analysis into wing geometry and the development of actuated wing flaps.   
+When the robot penetrates the poppy seed bed at a sufficiently shallow angle with respect to the horizontal plane, some axial translation is observed [Figure \ref{fig:tf_success}]. Pointing the nose of the auger downwards prevents the robot from resurfacing immediately, giving it enough time to pull itself forward. This observation reinforces the need for further analysis into wing geometry and the development of actuated wing flaps.   
+
+\begin{figure}[H]
+\centering
+\includegraphics[height = 15cm]{./imgs/tf_success}
+\caption{Successful forward progression with a $\phi_{opt} = \SI{23}{\degree}$ auger}
+\label{fig:tf_success}
+\end{figure}
 
 \section{Conclusion}
 3D printing was used to rapidly produce numerous prototypes of a robot capable of moving freely within granular media. These iterations were tested in a loosely packed poppy seed bed to clarify the behavior of a prone, auger-bearing robot translating axially. To obtain a more informed view of the robot's mechanics, a theoretical model  which optimizes the local inclination of an auger was formulated. When a robot with the optimized screw was inserted into the seeds at a shallow angle, a significant improvement in forward movement was observed. For all iterations built, clockwise rotation due to yaw torque persisted. To restrict movement to the axial direction, further investigations into auxiliary accessories (e.g wings, rudders, trims) could be performed. Once mobility in 1-dimension is realized, motion planning and control for higher dimensional workspaces can be explored.      
