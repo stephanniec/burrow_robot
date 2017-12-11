@@ -44,12 +44,12 @@ Subterranean navigation and operation is important for a sundry of tasks, such a
 In August 2017, Texier \textit{et. al} developed a mathematical model that predicts the amount of propulsive force created by a wire coil (with a small fiber radius) moving horizontally through a tank of plastic beads. From experiments, the pulling force induced was found to depend linearly on the depth of the rotating helix. A method for computing optimal local inclination angles was verified for measured friction coefficient ratios. The relationship discovered between the helix's translational speed and local inclination was subsequently used to validate our characterization of auger motion in granular media. In \cite{Melo}, the coil movement was constrained to a horizontal track. Eventually, however, we want to build a robot capable of moving freely; as such, a model which considers arbitrary directions is required.     
 
 Li \textit{et. al} employed finite element analysis to split the foot of a RHex robot into thin, rigid plates. When RHex scuttles across a granular substrate, the force and velocity vectors on each plate vary in direction, as does the angle. 
-Vertical and horizontal stress per depth were measured for differently oriented tiles pushed through poppy seeds and \SI{0.3}{\milli\m} and \SI{3}{\milli\m} glass beads. 
+Vertical and horizontal stress per unit depth were measured for differently oriented tiles pushed through poppy seeds and \SI{0.3}{\milli\m} and \SI{3}{\milli\m} glass beads. 
 Fourier transforms were subsequently applied to obtain generalized fitting approximations for normal and tangential friction coefficients sensitive to a plate's attack and intrusion angles. In this study, these equations as well as the zeroth- and first-order Fourier coefficients explicitly calculated for loosely-packed poppy seeds were used. 
 
 \section{Iteration Progression}
 
-A robot with 5 main components was designed [Figure \ref{fig:augerbot}]. When powered, an Archimedes screw mounted at the head of the robot spun to part granular media and pull the robot forward. This was attached to an adapter plate which fit snugly around the shaft of a \SI{12}{\V} DC motor. A cylindrical cap on the motor itself stopped granules from falling into an exposed gear box. Wedged inside the protective cap were wings which would prevent the body of the robot from rotating with the screw. Lastly, an elongated hemispherical housing unit covered the back of the robot to shield soldered wire junctions from wear and tear. Note, a modular setup was created to make testing different combinations of screws and wing shapes easier. 
+A robot with five main components was designed [Figure \ref{fig:augerbot}]. When powered, an Archimedes screw mounted at the head of the robot spun to part granular media and pull the robot forward. This was attached to an adapter plate which fit snugly around the shaft of a \SI{12}{\V} DC motor. A cylindrical cap on the motor itself stopped granules from falling into an exposed gear box. Wedged inside the protective cap were wings which would prevent the body of the robot from rotating with the screw. Lastly, an elongated hemispherical housing unit covered the back of the robot to shield soldered wire junctions from wear and tear. Note, a modular setup was created to make testing different combinations of screws and wing shapes easier. 
 
 \begin{figure}[H]
 \centering
@@ -58,7 +58,7 @@ A robot with 5 main components was designed [Figure \ref{fig:augerbot}]. When po
 \label{fig:augerbot}
 \end{figure}
 
-Multi-auger systems were rejected for this preliminary study to simplify the mechanics involved, mitigate human error during the assembly process, and accelerate the evolution of the robot's design. To test the prototypes, a 60" by 21" by 4" tank of poppy seeds with a volume fraction between 0.57 and 0.62 was used. Poppy seeds were chosen because the granules are roughly uniform in size.
+Multi-auger systems were rejected for this preliminary study to simplify the mechanics involved, mitigate human error during the assembly process, and accelerate the evolution of the robot's design. To test the prototypes, a 60" by 21" by 4" bed of poppy seeds with a volume fraction between 0.57 and 0.62 was used. Poppy seeds were chosen because the granules are roughly uniform in size.
 
 For the first few iterations, all parts - aside from the motor and fasteners - were manufactured from PLA using an Ultimaker 3 3D Printer. To explore the parameter space, arbitrary dimensions were selected to create three augers and three pairs of wings [Figure \ref{fig:trial1}]. The experiments listed in Table \ref{tests} were conducted for each prototype created. During the first round of testing, all auger and wing permutations for the components shown below were evaluated.   
 \begin{figure}[H]
@@ -73,7 +73,7 @@ For the first few iterations, all parts - aside from the motor and fasteners - w
 \begin{subfigure}{.5\textwidth}
 	\centering
 	\includegraphics[height=5.5cm]{./imgs/wings_shapes}
-	\caption{\SI{34.32}{\milli\m} x \SI{12}{\milli\m} triangular wings and \SI{40}{\milli\m} x \SI{12}{\milli\m} rectangular and curved wings}
+	\caption{\SI{34.32}{\milli\m} by \SI{12}{\milli\m} triangular wings and \SI{40}{\milli\m} by \SI{12}{\milli\m} rectangular and curved wings}
 	\label{fig:wings_shapes}
 \end{subfigure}
 \caption{Trial 1 augers and wings}
@@ -103,7 +103,7 @@ With the new auger, no noticeable difference in performance was observed. Howeve
 \label{fig:t1_success}
 \end{figure}
 
-\section{Analytical Optimization}
+\section{Numerical Optimization}
 To find the optimal parameters needed to maximize an auger's pulling ability, a more principled method - inspired by extant studies - was developed \cite{Melo,Li}.
 
 \begin{figure}[H]
@@ -150,7 +150,7 @@ where $\vec{e_x} = \left\langle 0,0,1 \right\rangle $. Introducing non-dimension
 F_x(\phi, \tilde{U}) = \frac{2\pi R^2n}{\cos(\phi)}\left[\frac{1}{2}(C_n-C_t)\sin(\phi)\cos(\phi)\left[\sqrt{1+\tilde{U}^2}+\tilde{U}^2\ln\left(\frac{\tilde{U}}{1+\sqrt{1+\tilde{U}^2}} \right)  \right] \\
 - \tilde{U}(C_t\sin^2(\phi)+C_n\cos^2(\phi))\left(\sqrt{1+\tilde{U}^2}-\tilde{U}\right) \right]\ \text{.} 
 \end{dmath}
-When the system is at equilibrium, $\phi$ is the only parameter that controls the value of $U$. Recall, $C_t$ and $C_n$ both depend on $\phi$. The steady-state case is important because, when thrust and drag are balanced, $U$ is the constant velocity at which the auger advances along the x-direction. Algorithm 1, therefore, systematically varies $\phi\in\left(0,\frac{\pi}{2} \right] $ to find the $\phi_{opt}$ value which yields the highest $U$.  
+When the system is at equilibrium, $\phi$ is the only parameter that controls the value of $U$. Recall, $C_t$ and $C_n$ both depend on $\phi$. The steady-state case is important because, when thrust and drag are balanced, $U$ is the constant velocity at which the auger advances along the x-direction. Algorithm 1, therefore, systematically varies $\phi\in\left(0,\frac{\pi}{2} \right) $ to find the $\phi_{opt}$ value which yields the highest $U$.  
 
 \begin{algorithm}[H]
 	\caption{Helix Local Inclination Optimization}
@@ -199,7 +199,7 @@ where $d$ is a known depth.
 \label{fig:helix_plate}
 \end{figure}
 
-With explicit equations known for $F_x(\phi,U)$, $C_t$, and $C_n$, an aggressive auger was designed by first setting $R = \SI{0.02}{\m}$ and $n = 1$. These values were arbitrarily chosen since $R$ and $n$ do not influence $U$ when drag and thrust are balanced. Algorithm 1, using equations (\ref{FxAuger}, \ref{chenCt}-\ref{chenCn}), was then implemented to predict $U$ for different values of $\phi$ [Figure \ref{fig:UvPhi}]. Shown below, the maximum value of $U$ (\SI[per-mode=fraction]{8.19736e-2}{\m\per\s}) occurs when $\phi = \phi_{opt} = \SI{23}{\degree}$.   
+With explicit equations known for $F_x(\phi,U)$, $C_t$, and $C_n$, an aggressive auger was designed by first setting $R = \SI{0.02}{\m}$ and $n = 1$. These values were arbitrarily chosen since $R$ and $n$ do not influence $U$ when drag and thrust are balanced. Algorithm 1, using equations (\ref{FxAuger}, \ref{chenCt}-\ref{chenCn}), was then implemented to predict $U$ for different values of $\phi$ [Figure \ref{fig:UvPhi}]. Shown below, the maximum value of $U$ (\SI[per-mode=fraction]{8.197e-2}{\m\per\s}) occurs when $\phi = \phi_{opt} = \SI{23}{\degree}$.   
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{./imgs/UvPhi}
@@ -208,7 +208,7 @@ With explicit equations known for $F_x(\phi,U)$, $C_t$, and $C_n$, an aggressive
 \end{figure}
  
 \section{Optimized Augerbot Observations and Future Directions}
-In SolidWorks, a new auger was modeled with dimensions corresponding to the optimal parameters found using algorithm 1 [Table \ref{optParamTable}]. Compared to the helices tested previously [Figure \ref{fig:all_screws}], the thickness of the profile swept along the path of the screw was increased to ensure the threads merged properly with the stem.   
+In SolidWorks, a new auger was modeled with dimensions corresponding to the optimal parameters found using algorithm 1 [Table \ref{optParamTable}]. Compared to the helices tested previously, the thickness of the profile swept along the path of the screw was increased to ensure the threads merged properly with the stem.   
 
 \begin{table}[H] 
 \centering
@@ -227,7 +227,7 @@ In SolidWorks, a new auger was modeled with dimensions corresponding to the opti
 \end{table}
 
 \medskip
-Figure \ref{fig:final_robot} shows the optimized auger prototype fastened onto the head of the robot. Like before, surface-skimming, diving and submerged experiments were run in a loosely packed bed of poppy seeds. The locomotive behaviors exhibited by the new robot were then compared against those observed for previous iterations. Wings parallel to the horizontal plane (\SI{0}{\degree}) and wings tiled \SI{30}{\degree} with respect to the horizontal plane were also mixed and matched to adjust the trajectory of the robot.  
+Figure \ref{fig:final_robot} shows the optimized auger prototype fastened onto the head of the robot. Like before, surface-skimming, diving and submerged experiments were run in a loosely packed bed of poppy seeds. The locomotive behaviors exhibited by the new robot were then compared against those observed for previous iterations. Wings parallel to the horizontal plane (\SI{0}{\degree}) and wings tilted \SI{30}{\degree} with respect to the horizontal plane were also mixed and matched to adjust the trajectory of the robot.  
 
 \begin{figure}[H]
 \centering
@@ -240,7 +240,7 @@ Figure \ref{fig:final_robot} shows the optimized auger prototype fastened onto t
 \begin{subfigure}{.5\textwidth}
 	\centering
 	\includegraphics[height=5.5cm]{./imgs/wings}
-	\caption{\SI{40}{\milli\m} x \SI{12}{\milli\m} wings oriented \SI{0}{\degree} and \SI{30}{\degree} with respect to the horizontal plane}
+	\caption{\SI{40}{\milli\m} by \SI{12}{\milli\m} wings oriented \SI{0}{\degree} and \SI{30}{\degree} with respect to the horizontal plane}
 	\label{fig:wings}
 \end{subfigure}
 \caption{Modular components used to tune the optimized robot}
@@ -249,7 +249,7 @@ Figure \ref{fig:final_robot} shows the optimized auger prototype fastened onto t
 
 When the robot is buried horizontally \SI{0.05}{\m} underground, it does not advance forward. Instead, the stem tilts out of the poppy seed bed within a span of 2 seconds. Looking at the geometry of the auger, it is evident that a stress gradient, in the direction of gravity, contributes to the upward bias of the robot's motion. To counter this resurfacing behavior, wings with a downward pitch could be added to ensure neutral buoyancy. Additional trim flaps could also be added to actively control the dive angle of the auger's nose. 
  
-When the robot is placed horizontally on the surface of a freshly fluidized (i.e level) poppy seed bed, it spirals in the clockwise direction due to the right-handed asymmetry of the auger for all angles about the robot's roll axis. This behavior matches that exhibited by previous prototypes. An attempt to produce counter-rotation using a \SI{30}{\degree} left wing  and \SI{-30}{\degree} right wing produced negligible results. Larger wings or a rudder could be installed to neutralize the torque generated. A left-handed auger also be added adjacent to the existing right-handed auger. 
+When the robot is placed horizontally on the surface of a freshly fluidized (i.e level) poppy seed bed, it spirals in the clockwise direction - due to the right-handed asymmetry of the auger - for all angles about the robot's roll axis. This behavior matches that exhibited by previous prototypes. An attempt to produce counter-rotation using a \SI{30}{\degree} left wing  and \SI{-30}{\degree} right wing produced negligible results. Larger wings or a rudder could be installed to neutralize the torque generated. A left-handed auger also be added adjacent to the existing right-handed auger. 
  
 When the robot penetrates the poppy seed bed at a sufficiently shallow angle with respect to the horizontal plane, some axial translation is observed [Figure \ref{fig:tf_success}]. Pointing the nose of the auger downwards prevents the robot from resurfacing immediately, giving it enough time to pull itself forward. This observation reinforces the need for further analysis into wing geometry and the development of actuated wing flaps.   
 
@@ -261,7 +261,7 @@ When the robot penetrates the poppy seed bed at a sufficiently shallow angle wit
 \end{figure}
 
 \section{Conclusion}
-3D printing was used to rapidly produce numerous prototypes of a robot capable of moving freely within granular media. These iterations were tested in a loosely packed poppy seed bed to clarify the behavior of a prone, auger-bearing robot translating axially. To obtain a more informed view of the robot's mechanics, a theoretical model  which optimizes the local inclination of an auger was formulated. When a robot with the optimized screw was inserted into the seeds at a shallow angle, a significant improvement in forward movement was observed. For all iterations built, clockwise rotation due to yaw torque persisted. To restrict movement to the axial direction, further investigations into auxiliary accessories (e.g wings, rudders, trims) could be performed. Once mobility in 1-dimension is realized, motion planning and control for higher dimensional workspaces can be explored.      
+3D printing was used to rapidly produce numerous prototypes of a robot capable of moving freely within granular media. These iterations were tested in a loosely packed poppy seed bed to clarify the behavior of a prone, auger-bearing robot translating axially. To obtain a more informed view of the robot's mechanics, a theoretical model  which optimizes the local inclination of an auger was formulated. When a robot with the optimized screw was inserted into the seeds at a shallow angle, a significant improvement in forward movement was observed. For all iterations built, clockwise rotation due to yaw torque persisted. To restrict movement to the axial direction, further investigations into auxiliary accessories (e.g wings, rudders, trims) could be performed. Once mobility in one dimension is realized, motion planning and control for higher dimensional workspaces can be explored.      
 
 \bibliographystyle{plain}
 \bibliography{burrowing_biblio}
